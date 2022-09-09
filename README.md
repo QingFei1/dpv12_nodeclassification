@@ -6,8 +6,18 @@
 ```
 ##测试结果
 ```
-![image](https://user-images.githubusercontent.com/91861679/189277079-cc7e1933-bf2d-4e35-90df-15364389eace.png)
-![image](https://user-images.githubusercontent.com/91861679/189277131-fdc08f09-68c0-46b4-a1a7-188177369d2d.png)
-![image](https://user-images.githubusercontent.com/91861679/189277145-ed15733d-cc1c-4116-b5d1-0af1bedcc014.png)
+训练500个epoch
+1.graphsage
+| Variant                 | test_acc      | val_acc       |
+|-------------------------|---------------|---------------|
+| (data1.pt, 'graphsage') | 0.4560±0.0000 | 0.4020±0.0000 |
+2.sgc
+| Variant           | test_acc      | val_acc       |
+|-------------------|---------------|---------------|
+| (data1.pt, 'sgc') | 0.2918±0.0000 | 0.2539±0.0000 |
+3.srgcn
+| Variant             | test_acc      | val_acc       |
+|---------------------|---------------|---------------|
+| (data1.pt, 'srgcn') | 0.2241±0.0000 | 0.2037±0.0000 |
 ```
 
