@@ -8,17 +8,27 @@
 ```
 train集数量： 770898 ，test： 329902 ，valid： 130565 ，edge_index:[2,19544194]
 使用以下三个模型训练500个epoch
-1.graphsage
-| Variant                 | test_acc      | val_acc       |
-|-------------------------|---------------|---------------|
-| (data1.pt, 'graphsage') | 0.4560±0.0000 | 0.4020±0.0000 |
-2.sgc
-| Variant           | test_acc      | val_acc       |
-|-------------------|---------------|---------------|
-| (data1.pt, 'sgc') | 0.2918±0.0000 | 0.2539±0.0000 |
-3.srgcn
-| Variant             | test_acc      | val_acc       |
-|---------------------|---------------|---------------|
-| (data1.pt, 'srgcn') | 0.2241±0.0000 | 0.2037±0.0000 |
+<table>
+    <tr>
+        <th>Model</th>
+        <th>test_acc</th>
+        <th>val_acc</th>
+    </tr>
+    <tr>
+        <th>graphsage</th>
+        <td>0.4560±0.0000</td>
+        <td>0.4020±0.0000</td>
+    </tr>
+    <tr>
+        <th>sgc</th>
+        <td>0.2918±0.0000</td>
+        <td>0.2539±0.0000</td>
+    </tr>
+    <tr>
+        <th>srgcn</th>
+        <td>0.2241±0.0000</td>
+        <td>0.2037±0.0000</td>
+    </tr> 
+</table>
 ```
 
