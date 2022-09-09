@@ -8,6 +8,7 @@
 ```
 train集数量： 770898 ，test： 329902 ，valid： 130565 ，edge_index:[2,19544194]
 使用以下三个模型训练500个epoch
+
 <table>
     <tr>
         <th>Model</th>
@@ -30,5 +31,6 @@ train集数量： 770898 ，test： 329902 ，valid： 130565 ，edge_index:[2,1
         <td>0.2037±0.0000</td>
     </tr> 
 </table>
+
 ```
 
