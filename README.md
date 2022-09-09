@@ -1,10 +1,10 @@
-#dpv12节点分类
+# dpv12节点分类
 ```
 1.data_filter是处理数据集的code,del_noref是在使用data_filter的过程中要使用的一个处理步骤，得到最终需要的文件
 2.x_oag_bert是使用oag_bert处理title+abstract+author+fos.name获得的768维的特征
 3.test_dpv12是使用cogdl训练的代码
 ```
-##测试结果
+## 测试结果
 ```
 训练500个epoch
 1.graphsage
