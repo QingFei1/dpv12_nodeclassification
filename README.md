@@ -28,7 +28,8 @@ The DBLP paper dataset can be downloaded from [AMiner](https://originalstatic.am
 Put downloaded files into the _data_ directory of the project directory and unzip DBLP papers.
 
 ## How to run
-1. processing: run cell by cell in data_filter.ipynb
+Processing: run cell by cell in data_filter.ipynb
 ```bash
-# 
+python x_oag_bert.py  # generate node embeddings
+python test_dpv12.py  # uncomment the corresponding lines to run sgc, sign, and graphsage.
 ```
