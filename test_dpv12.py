@@ -81,14 +81,16 @@ class MyNodeDataset(NodeDataset):
     
 
     def raw_file(self,dir_path):
-        names1 = ["x", "tx", "vx"]
+        # names1 = ["x", "tx", "vx"]
+        names1 = ["tx_train.npy", "tx.npy", "tx_valid.npy"]
         feature=[]
         label=[]
         for name in names1:
             path=os.path.join(dir_path,name)
-            feature.append(np.load(path))
-        x,tx,vx=feature
-        names2 = ["y", "ty", "vy"]
+            feature.append(torch.tensor(np.load(path)))
+        x_train,tx,vx=feature
+        # names2 = ["y", "ty", "vy"]
+        names2 = ["y.txt", "ty.txt", "vy.txt"]
         for name in names2:
             path=os.path.join(dir_path,name)
             lb=[]
@@ -101,13 +103,15 @@ class MyNodeDataset(NodeDataset):
         with open(path,'r')as f2:
             graph=self.edge_index_from_dict(f2)
         test_length=len(tx)
-        test_index = torch.arange(x.size(0), x.size(0) + test_length, dtype=torch.long)
+        print("test length ---", test_length, type(test_length))
+        print("x_train.shape:", x_train.shape)
+        test_index = torch.arange(x_train.shape[0], x_train.shape[0] + test_length, dtype=torch.long)
        
         val_length=len(vx)
         train_index = torch.arange(y.size(0), dtype=torch.long)
         val_index = torch.arange(y.size(0)+ test_length , y.size(0) + test_length +val_length, dtype=torch.long)
 
-        x = torch.cat([x, tx,vx], dim=0).float()
+        x = torch.cat([x_train, tx,vx], dim=0).float()
         y = torch.cat([y, ty,vy], dim=0).long()
 
 
@@ -122,7 +126,7 @@ class MyNodeDataset(NodeDataset):
 
 
     def process(self):
-        x,y,edge_index,train_mask,test_mask,val_mask=self.raw_file('/data') #写入文件夹路径
+        x,y,edge_index,train_mask,test_mask,val_mask=self.raw_file('data') #写入文件夹路径
         data = Graph(x=x, edge_index=edge_index, y=y)
         data.train_mask = train_mask
         data.val_mask = val_mask
@@ -133,4 +137,6 @@ class MyNodeDataset(NodeDataset):
 if __name__ == "__main__":
     # Train customized dataset via defining a new class
     dataset = MyNodeDataset()
-    experiment(dataset=dataset,model="graphsage",devices=[1])
+    # experiment(dataset=dataset,model="graphsage",device="cuda:3", seed=[1, 2, 3])
+    # experiment(dataset=dataset,model="sgc",device="cuda:1", seed=[1, 2, 3], epochs=1000)
+    experiment(dataset=dataset,model="sign",device="cuda:1", seed=[1, 2, 3], epochs=5000)

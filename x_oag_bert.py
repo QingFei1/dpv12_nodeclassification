@@ -8,8 +8,10 @@ from tqdm import tqdm
 #分别将dpv12_train.json和test,valid运行一次，得到特征
 #加载模型，注意，这里选择使用oagbert-v2版本
 tokenizer, model = oagbert("oagbert-v2")
+model.cuda()
 embedding=[]
-with open("/data/dpv12_test.json",'r')as fin:
+# with open("data/dpv12_test.json",'r')as fin:
+with open("data/dpv12_valid.json",'r')as fin:
     data=json.load(fin)
     
     for item in tqdm(data):
@@ -31,15 +33,16 @@ with open("/data/dpv12_test.json",'r')as fin:
         input_ids, input_masks, token_type_ids, masked_lm_labels, position_ids, position_ids_second, masked_positions, num_spans = model.build_inputs(title=title, abstract=abstract, authors=authors, concepts=concepts)
         # 使用模型进行前向传播
         sequence_output, pooled_output = model.bert.forward(
-            input_ids=torch.LongTensor(input_ids).unsqueeze(0),
-            token_type_ids=torch.LongTensor(token_type_ids).unsqueeze(0),
-            attention_mask=torch.LongTensor(input_masks).unsqueeze(0),
+            input_ids=torch.LongTensor(input_ids).unsqueeze(0).cuda(),
+            token_type_ids=torch.LongTensor(token_type_ids).unsqueeze(0).cuda(),
+            attention_mask=torch.LongTensor(input_masks).unsqueeze(0).cuda(),
             output_all_encoded_layers=False,
             checkpoint_activations=False,
-            position_ids=torch.LongTensor(position_ids).unsqueeze(0),
-            position_ids_second=torch.LongTensor(position_ids).unsqueeze(0)
+            position_ids=torch.LongTensor(position_ids).unsqueeze(0).cuda(),
+            position_ids_second=torch.LongTensor(position_ids).unsqueeze(0).cuda()
         )
         pooled_output=torch.squeeze(pooled_output)
         embedding.append(pooled_output.cpu().detach().numpy())
 em=np.array(embedding)
-np.save('/data/tx.npy',em)
+# np.save('data/tx.npy',em)
+np.save('data/tx_valid.npy',em)
