@@ -82,7 +82,8 @@ class MyNodeDataset(NodeDataset):
 
     def raw_file(self,dir_path):
         # names1 = ["x", "tx", "vx"]
-        names1 = ["tx_train.npy", "tx.npy", "tx_valid.npy"]
+        # names1 = ["tx_train.npy", "tx.npy", "tx_valid.npy"]
+        names1 = ["tx_train.npy", "tx_test.npy", "tx_valid.npy"]
         feature=[]
         label=[]
         for name in names1:
