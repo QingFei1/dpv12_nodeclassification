@@ -33,3 +33,10 @@ Processing: run cell by cell in data_filter.ipynb
 python x_oag_bert.py  # generate node embeddings
 python test_dpv12.py  # uncomment the corresponding lines to run sgc, sign, and graphsage.
 ```
+
+### Results
+| Variant          | test_acc      | val_acc       |
+|------------------|---------------|---------------|
+| sgc              | 0.3408±0.0150 | 0.3144±0.0117 |
+| sign             | 0.2625±0.0001 | 0.2499±0.0000 |
+| graphsage        | 0.5957±0.0224 | 0.5712±0.0237 |
