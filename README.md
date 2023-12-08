@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```
 
 ### Dataset
-The DBLP paper dataset can be downloaded from [AMiner](https://originalstatic.aminer.cn/misc/dblp.v12.7z) and the venue-to-label data can be downloaded from [Baidu Pan](https://pan.baidu.com/s/11Nz3OmyPj0eRlKC93Sp_oA) (with password ihj6).
+The DBLP paper dataset can be downloaded from [AMiner](https://originalstatic.aminer.cn/misc/dblp.v12.7z) and the venue-to-label data can be downloaded from [Baidu Pan](https://pan.baidu.com/s/11Nz3OmyPj0eRlKC93Sp_oA) (with password ihj6) or [Aliyun](https://open-data-set.oss-cn-beijing.aliyuncs.com/oag-benchmark/entity-tagging/aminer_name_cluster_edit.txt).
 Put downloaded files into the _data_ directory of the project directory and unzip DBLP papers.
 
 ## How to run
